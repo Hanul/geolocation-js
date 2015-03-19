@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>geolocation</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://j.maxmind.com/app/geoip.js"></script>
+		<script type="text/javascript" src="geolocation.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+		});
+
+		function successCallback(position) {
+
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+
+			document.getElementById("msg").innerHTML = "위도" + lat + ", 경도:" + lng;
+		}
+
+		function errorCallback(error) {
+			alert(error.message);
+		}
+		</script>
+	</head>
+	<body>
+		<div id="msg"></div>
+	</body>
+</html>
